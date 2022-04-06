@@ -3,7 +3,9 @@ package br.com.technicalshare.springboot.controller;
 import br.com.technicalshare.springboot.model.Mentores;
 import br.com.technicalshare.springboot.repository.MentoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 
@@ -24,5 +26,13 @@ public class MentoresController {
     @PostMapping
     public Mentores createMentores(@RequestBody Mentores mentores){
         return mentoresRepository.save(mentores);
+    }
+
+    // cria o get mentor by id REST API
+    @GetMapping("{id}")
+    public ResponseEntity<Mentores> getMentoresById(@PathVariable long id) {
+        Mentores mentores = mentoresRepository.findById(id)
+                .orElseThrow(() -> new ResourceAccessException("O Mentor com esse id não existe" + id));
+        return ResponseEntity.ok(mentores);
     }
 }

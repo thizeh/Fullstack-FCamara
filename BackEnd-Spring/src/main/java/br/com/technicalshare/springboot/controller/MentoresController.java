@@ -3,10 +3,7 @@ package br.com.technicalshare.springboot.controller;
 import br.com.technicalshare.springboot.model.Mentores;
 import br.com.technicalshare.springboot.repository.MentoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +18,11 @@ public class MentoresController {
     @GetMapping
     public List<Mentores> getAllMentores(){
         return mentoresRepository.findAll();
+    }
+
+    // cria Rest API dos mentores
+    @PostMapping
+    public Mentores createMentores(@RequestBody Mentores mentores){
+        return mentoresRepository.save(mentores);
     }
 }

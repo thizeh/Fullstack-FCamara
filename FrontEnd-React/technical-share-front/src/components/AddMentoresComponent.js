@@ -9,20 +9,30 @@ const AddMentoresComponent = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const saveMentores = (e) => {
+  const saveOrUpdateMentores = (e) => {
     e.preventDefault();
 
     const mentores = { firstName, lastName, emailId };
 
-    MentoresService.createMentores(mentores)
-      .then((response) => {
-        console.log(response.data);
+    if (id) {
+      MentoresService.updateMentores(id, mentores)
+        .then((response) => {
+          navigate("/mentores");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      MentoresService.createMentores(mentores)
+        .then((response) => {
+          console.log(response.data);
 
-        navigate("/mentores");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+          navigate("/mentores");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   useEffect(() => {
@@ -90,7 +100,7 @@ const AddMentoresComponent = () => {
 
                 <button
                   className="btn btn-success"
-                  onClick={(e) => saveMentores(e)}
+                  onClick={(e) => saveOrUpdateMentores(e)}
                 >
                   Registrar
                 </button>

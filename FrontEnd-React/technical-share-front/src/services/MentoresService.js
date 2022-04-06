@@ -6,6 +6,10 @@ class MentoresService {
   getAllMentores() {
     return axios.get(MENTORES_BASE_REST_API_URL);
   }
+
+  createMentores(mentores) {
+    return axios.post(MENTORES_BASE_REST_API_URL, mentores);
+  }
 }
 
 export default new MentoresService();

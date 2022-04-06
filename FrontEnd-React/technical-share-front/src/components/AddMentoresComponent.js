@@ -1,16 +1,27 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import MentoresService from "../services/MentoresService";
 
 const AddMentoresComponent = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [emailId, setEmailId] = useState("");
+  const navigate = useNavigate();
 
   const saveMentores = (e) => {
     e.preventDefault();
 
     const mentores = { firstName, lastName, emailId };
 
-    console.log(mentores);
+    MentoresService.createMentores(mentores)
+      .then((response) => {
+        console.log(response.data);
+
+        navigate("/mentores");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -62,6 +73,9 @@ const AddMentoresComponent = () => {
                 >
                   Registrar
                 </button>
+                <Link to="/mentores" className="btn btn-danger">
+                  Cancelar
+                </Link>
               </form>
             </div>
           </div>

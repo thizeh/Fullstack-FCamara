@@ -20,7 +20,7 @@ public class Mentores {
     private long id;
 
     @Column(name = "first_name")
-    private String firsName;
+    private String firstName;
 
     @Column(name = "last_name")
     private String lastName;

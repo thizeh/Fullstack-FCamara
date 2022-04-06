@@ -1,5 +1,6 @@
 package br.com.technicalshare.springboot.controller;
 
+import br.com.technicalshare.springboot.exception.ResourceNotFoundException;
 import br.com.technicalshare.springboot.model.Mentores;
 import br.com.technicalshare.springboot.repository.MentoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,20 @@ public class MentoresController {
         Mentores mentores = mentoresRepository.findById(id)
                 .orElseThrow(() -> new ResourceAccessException("O Mentor com esse id não existe" + id));
         return ResponseEntity.ok(mentores);
+    }
+
+    // cria o update mentor REST API
+    @PutMapping("{id}")
+    public ResponseEntity<Mentores> updateMentores(@PathVariable long id,@RequestBody Mentores mentoresDetails){
+        Mentores updateMentores = mentoresRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("O Mentor com esse id não existe" + id));
+
+        updateMentores.setFirstName(mentoresDetails.getFirstName());
+        updateMentores.setLastName(mentoresDetails.getLastName());
+        updateMentores.setEmailId(mentoresDetails.getEmailId());
+
+        mentoresRepository.save(updateMentores);
+
+        return ResponseEntity.ok(updateMentores);
     }
 }

@@ -4,6 +4,7 @@ import React from "react";
 import ListMentoresComponent from "./components/ListMentoresComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from "./components/FooterComponent";
+import AddMentoresComponent from "./components/AddMentoresComponent";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
             <Route
               path="/mentores"
               element={<ListMentoresComponent></ListMentoresComponent>}
+            ></Route>
+            <Route
+              path="/add-mentores"
+              element={<AddMentoresComponent></AddMentoresComponent>}
             ></Route>
           </Routes>
         </div>

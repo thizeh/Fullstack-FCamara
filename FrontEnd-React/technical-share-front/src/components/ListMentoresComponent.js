@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import MentoresService from "../services/MentoresService";
 
 const ListMentoresComponent = () => {
@@ -18,6 +19,10 @@ const ListMentoresComponent = () => {
   return (
     <div className="container">
       <h2 className="text-center"> Lista de Mentores</h2>
+      <Link to="/add-mentores" className="btn btn-primary mb-2">
+        {" "}
+        Adicionar mentores
+      </Link>
       <table className="table table-bordered table-striped">
         <thead>
           <th> Id do Mentor</th>

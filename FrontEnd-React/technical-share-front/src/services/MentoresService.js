@@ -18,6 +18,10 @@ class MentoresService {
   updateMentores(mentoresId, mentores) {
     return axios.put(MENTORES_BASE_REST_API_URL + "/" + mentoresId, mentores);
   }
+
+  deleteMentores(mentoresId) {
+    return axios.delete(MENTORES_BASE_REST_API_URL + "/" + mentoresId);
+  }
 }
 
 export default new MentoresService();

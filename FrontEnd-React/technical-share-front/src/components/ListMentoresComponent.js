@@ -6,6 +6,10 @@ const ListMentoresComponent = () => {
   const [mentores, setMentores] = useState([]);
 
   useEffect(() => {
+    getAllMentores();
+  }, []);
+
+  const getAllMentores = () => {
     MentoresService.getAllMentores()
       .then((response) => {
         setMentores(response.data);
@@ -14,7 +18,17 @@ const ListMentoresComponent = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  };
+
+  const deleteMentores = (mentoresId) => {
+    MentoresService.deleteMentores(mentoresId)
+      .then((response) => {
+        getAllMentores();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="container">
@@ -45,6 +59,13 @@ const ListMentoresComponent = () => {
                 >
                   Modificar
                 </Link>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteMentores(mentor.id)}
+                  style={{ marginLeft: "10px" }}
+                >
+                  Apagar
+                </button>
               </td>
             </tr>
           ))}

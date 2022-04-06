@@ -10,6 +10,10 @@ class MentoresService {
   createMentores(mentores) {
     return axios.post(MENTORES_BASE_REST_API_URL, mentores);
   }
+
+  getMentoresById(mentoresId) {
+    return axios.get(MENTORES_BASE_REST_API_URL + "/" + mentoresId);
+  }
 }
 
 export default new MentoresService();

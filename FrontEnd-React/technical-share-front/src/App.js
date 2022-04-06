@@ -26,6 +26,10 @@ function App() {
               path="/add-mentores"
               element={<AddMentoresComponent></AddMentoresComponent>}
             ></Route>
+            <Route
+              path="/edit-mentores/:id"
+              element={<AddMentoresComponent></AddMentoresComponent>}
+            ></Route>
           </Routes>
         </div>
         <FooterComponent />

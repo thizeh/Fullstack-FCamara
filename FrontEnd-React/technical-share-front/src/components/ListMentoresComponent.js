@@ -29,6 +29,7 @@ const ListMentoresComponent = () => {
           <th> Nome do Mentor</th>
           <th> Sobrenome do Mentor</th>
           <th> Email do Mentor</th>
+          <th> Ações</th>
         </thead>
         <tbody>
           {mentores.map((mentor) => (
@@ -37,6 +38,14 @@ const ListMentoresComponent = () => {
               <td>{mentor.firstName}</td>
               <td>{mentor.lastName}</td>
               <td>{mentor.emailId}</td>
+              <td>
+                <Link
+                  className="btn btn-info"
+                  to={`/edit-mentores/${mentor.id}`}
+                >
+                  Modificar
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

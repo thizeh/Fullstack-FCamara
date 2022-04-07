@@ -4,6 +4,7 @@ import br.com.technicalshare.springboot.exception.ResourceNotFoundException;
 import br.com.technicalshare.springboot.model.Mentores;
 import br.com.technicalshare.springboot.repository.MentoresRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.ResourceAccessException;
@@ -50,5 +51,17 @@ public class MentoresController {
         mentoresRepository.save(updateMentores);
 
         return ResponseEntity.ok(updateMentores);
+    }
+
+    // cria o delete mentores REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<HttpStatus> deleteMentores(@PathVariable long id) {
+
+        Mentores mentores = mentoresRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("O Mentor com esse id não existe" + id));
+
+        mentoresRepository.delete(mentores);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

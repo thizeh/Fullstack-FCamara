@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const MENTORES_BASE_REST_API_URL =
-  "http://springbootmysqlfcamaratechnicalshare-env.eba-nagi3mma.us-east-1.elasticbeanstalk.com/api/v1/mentores";
+  "http://fc29.us-east-1.elasticbeanstalk.com/api/v1/mentores";
 
 class MentoresService {
   getAllMentores() {

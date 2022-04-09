@@ -19,6 +19,10 @@ public class SpringbootBackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
+		Mentores mentores = new Mentores();
+		mentores.setFirstName("Thiago");
+		mentores.setLastName("Oliveira");
+		mentores.setEmailId("thiago@email.com");
+		mentoresRepository.save(mentores);
 	}
 }

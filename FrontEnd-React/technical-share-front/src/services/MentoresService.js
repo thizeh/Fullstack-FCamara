@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const MENTORES_BASE_REST_API_URL =
-  "http://fc29.herokuapp.com/codejava/api/v1/mentores";
+  "https://fc29.herokuapp.com/codejava/api/v1/mentores";
 
 class MentoresService {
   getAllMentores() {

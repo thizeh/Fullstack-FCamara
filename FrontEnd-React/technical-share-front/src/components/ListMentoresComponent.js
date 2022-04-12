@@ -41,17 +41,27 @@ const ListMentoresComponent = () => {
         <thead>
           <th> Id do Mentor</th>
           <th> Nome do Mentor</th>
-          <th> Sobrenome do Mentor</th>
+          <th> Biografia do Mentor</th>
           <th> Email do Mentor</th>
+          <th> Cargo do Mentor</th>
+          <th> Especialidade do Mentor</th>
+          <th> Avatar do Mentor</th>
+          <th> Horário do Mentor</th>
+          <th> Senha do Mentor</th>
           <th> Ações</th>
         </thead>
         <tbody>
           {mentores.map((mentor) => (
             <tr key={mentor.id}>
               <td>{mentor.id}</td>
-              <td>{mentor.firstName}</td>
-              <td>{mentor.lastName}</td>
-              <td>{mentor.emailId}</td>
+              <td>{mentor.nome}</td>
+              <td>{mentor.bio}</td>
+              <td>{mentor.email}</td>
+              <td>{mentor.cargo}</td>
+              <td>{mentor.espec}</td>
+              <td>{mentor.avatar}</td>
+              <td>{mentor.horario}</td>
+              <td>{mentor.senha}</td>
               <td>
                 <Link
                   className="btn btn-info"

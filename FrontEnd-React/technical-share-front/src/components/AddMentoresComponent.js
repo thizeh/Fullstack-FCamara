@@ -3,16 +3,22 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import MentoresService from "../services/MentoresService";
 
 const AddMentoresComponent = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [emailId, setEmailId] = useState("");
+  const [nome, setNome] = useState("");
+  const [bio, setBio] = useState("");
+  const [email, setEmail] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [espec, setEspec] = useState("");
+  const [avatar, setAvatar] = useState("");
+  const [horario, setHorario] = useState("");
+  const [senha, setSenha] = useState("");
+
   const navigate = useNavigate();
   const { id } = useParams();
 
   const saveOrUpdateMentores = (e) => {
     e.preventDefault();
 
-    const mentores = { firstName, lastName, emailId };
+    const mentores = { nome, bio, email, cargo, espec, avatar, horario, senha };
 
     if (id) {
       MentoresService.updateMentores(id, mentores)
@@ -38,9 +44,14 @@ const AddMentoresComponent = () => {
   useEffect(() => {
     MentoresService.getMentoresById(id)
       .then((response) => {
-        setFirstName(response.data.firstName);
-        setLastName(response.data.lastName);
-        setEmailId(response.data.emailId);
+        setNome(response.data.nome);
+        setBio(response.data.bio);
+        setEmail(response.data.email);
+        setCargo(response.data.cargo);
+        setEspec(response.data.espec);
+        setAvatar(response.data.avatar);
+        setHorario(response.data.horario);
+        setHorario(response.data.senha);
       })
       .catch((error) => {
         console.log(error);
@@ -65,25 +76,25 @@ const AddMentoresComponent = () => {
             <div className="card-body">
               <form>
                 <div className="form-group mb-2">
-                  <label className="form-label">Primeiro Nome</label>
+                  <label className="form-label">Nome</label>
                   <input
                     type="text"
-                    placeholder="Digite o primeiro nome"
-                    name="firstName"
+                    placeholder="Digite o nome"
+                    name="nome"
                     className="form-control"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
                   ></input>
                 </div>
                 <div className="form-group mb-2">
-                  <label className="form-label"> Sobrenome</label>
+                  <label className="form-label"> Biografia</label>
                   <input
                     type="text"
-                    placeholder="Digite o Sobrenome"
-                    name="lastName"
+                    placeholder="Biografia"
+                    name="bio"
                     className="form-control"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
                   ></input>
                 </div>
                 <div className="form-group mb-2">
@@ -91,10 +102,65 @@ const AddMentoresComponent = () => {
                   <input
                     type="email"
                     placeholder="Digite o email"
-                    name="emailId"
+                    name="email"
                     className="form-control"
-                    value={emailId}
-                    onChange={(e) => setEmailId(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  ></input>
+                </div>
+                <div className="form-group mb-2">
+                  <label className="form-label">Cargo</label>
+                  <input
+                    type="text"
+                    placeholder="Digite o cargo"
+                    name="cargo"
+                    className="form-control"
+                    value={cargo}
+                    onChange={(e) => setCargo(e.target.value)}
+                  ></input>
+                </div>
+                <div className="form-group mb-2">
+                  <label className="form-label">Especialidade</label>
+                  <input
+                    type="text"
+                    placeholder="Digite a especialidade"
+                    name="espec"
+                    className="form-control"
+                    value={espec}
+                    onChange={(e) => setEspec(e.target.value)}
+                  ></input>
+                </div>
+                <div className="form-group mb-2">
+                  <label className="form-label">Avatar</label>
+                  <input
+                    type="text"
+                    placeholder="Digite o link da imagem"
+                    name="avatar"
+                    className="form-control"
+                    value={avatar}
+                    onChange={(e) => setAvatar(e.target.value)}
+                  ></input>
+                </div>
+                <div className="form-group mb-2">
+                  <label className="form-label">Horario</label>
+                  <input
+                    type="date"
+                    placeholder="Digite a data"
+                    name="horario"
+                    className="form-control"
+                    value={horario}
+                    onChange={(e) => setHorario(e.target.value)}
+                  ></input>
+                </div>
+                <div className="form-group mb-2">
+                  <label className="form-label">Senha</label>
+                  <input
+                    type="text"
+                    placeholder="Digite a data"
+                    name="senha"
+                    className="form-control"
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
                   ></input>
                 </div>
 

@@ -1,9 +1,9 @@
-import React from "react";
+/*import React from "react";
 
 const FooterComponent = () => {
   return (
     <div>
-      <footer className="footer">
+      <footer className="footer bottom-0">
         <span className="text-muted">
           Orgulhosamente desenvolvido pelo Squad 29
         </span>
@@ -12,4 +12,4 @@ const FooterComponent = () => {
   );
 };
 
-export default FooterComponent;
+export default FooterComponent;*/

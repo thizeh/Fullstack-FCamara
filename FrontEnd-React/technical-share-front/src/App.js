@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React from "react";
 import ListMentoresComponent from "./components/ListMentoresComponent";
 import HeaderComponent from "./components/HeaderComponent";
-import FooterComponent from "./components/FooterComponent";
+
 import AddMentoresComponent from "./components/AddMentoresComponent";
 
 function App() {
@@ -32,7 +32,6 @@ function App() {
             ></Route>
           </Routes>
         </div>
-        <FooterComponent />
       </Router>
     </div>
   );
